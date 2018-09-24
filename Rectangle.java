@@ -1,16 +1,26 @@
 public class Rectangle {
 
-    private double length;
-    private double height;
-    private double perimeter;
-    private double area;
+    protected double length;
+    protected double height;
+    protected double perimeter = (2 * length) + (2 * height);
+    protected double area = length * height;
 
     static int instanceCounter = -1;
     int counter = -1;
 
     int rectangleID;
 
-    Rectangle(double l, double h){
+// Default constructor
+    public Rectangle(){
+
+        instanceCounter++;
+        counter = instanceCounter;
+
+        length = 0;
+        height = 0;
+        rectangleID = counter;
+    }
+    public Rectangle(double l, double h){
 
         instanceCounter++;
         counter = instanceCounter;
@@ -18,6 +28,8 @@ public class Rectangle {
         length = l;
         height = h;
         rectangleID = counter;
+        perimeter = (2 * length) + (2 * height);
+        area = length * height;
     }
 
     public double area(){
@@ -56,7 +68,17 @@ public class Rectangle {
         return rectangleID;
     }
 
+    @Override
+    public String toString() {
+        return "Rectangle, " + length + " x " + height;
+    }
 
+    public boolean equals(Object other){
+        if (other instanceof Rectangle){
+            Rectangle s = (Rectangle) other;
+            return this.area == s.area;
+        }
+        return false;
 
-
+    }
 }
