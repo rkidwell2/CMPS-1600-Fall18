@@ -1,7 +1,19 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ShapeTester {
 
+    /**
+     * Uses the display method to display each element of an array list of shapes
+     * @param arraylist
+     */
+    public static void displayArray(ArrayList<Shape> arraylist) {
+        for (int i = 0; i < arraylist.size(); ++i) {
+            Shape element = arraylist.get(i);
+            element.display();
+
+        }
+    }
 
     public static void main(String []args){
 
@@ -20,13 +32,13 @@ public class ShapeTester {
         testarray.add(sqrtest);
         testarray.add(anothertri);
 
-
-        for (int i = 0; i < testarray.size(); ++i) {
+        //Below function is no longer needed as we now have a display method
+        /*for (int i = 0; i < testarray.size(); ++i) {
             Shape element = testarray.get(i);
             System.out.println(element.getShape());
         }
 
-        System.out.println();
+        System.out.println();*/
 
         for (int i = 0; i < testarray.size(); ++i) {
             Shape element = testarray.get(i);
@@ -36,6 +48,18 @@ public class ShapeTester {
             }
 
         }
-        System.out.println("Shape count: " + Shape.getShapeCount());
+        System.out.println();
+        System.out.println("Shape count: " + Shape.getShapeCount() + "\n");
+
+        //Unsorted array
+        System.out.println("Unsorted array:");
+        displayArray(testarray);
+
+        Collections.sort(testarray);
+
+        //Sorted array
+        System.out.println("Sorted array:");
+        displayArray(testarray);
     }
+
 }
