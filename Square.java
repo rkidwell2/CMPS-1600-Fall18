@@ -2,10 +2,11 @@ public class Square extends Rectangle {
 
 
     public Square(double side){
-       length = side;
-       height = side;
-       area = side * side;
-       perimeter = 4 * side;
+        length = side;
+        height = side;
+        area = side * side;
+        perimeter = 4 * side;
+        shapeCount += 1;
 
     }
 
@@ -14,13 +15,11 @@ public class Square extends Rectangle {
         return ("Square, " + length + " x " + height) ;
     }
 
-
-    public boolean equals(Object other){
-        if (other instanceof Square){
-            Square s = (Square) other;
-            return this.area == s.area;
-        }
-        return false;
-
+    @Override
+    public String getShape(){
+        return "Square";
     }
+
+
 }
+
