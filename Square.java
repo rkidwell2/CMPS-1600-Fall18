@@ -4,8 +4,6 @@ public class Square extends Rectangle {
     public Square(double side){
         length = side;
         height = side;
-        area = side * side;
-        perimeter = 4 * side;
         shapeCount += 1;
 
     }
