@@ -1,13 +1,6 @@
-/*
-The myLong class is a class capable of holding and manipulating integers with size up to 100 digits.
-Methods: setLong, add, subtract, multiply.
-
-NOTE: myLongs that pass functions will NOT have the same value after the function has been passed.
-You must reset the value of the myLong that passed a function if you wish to use it again.
- */
-
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class myLong{
 
@@ -67,16 +60,30 @@ public class myLong{
         //Need to get rid of excess zeros at beginning, as they can skew computations.
         //This will alter myNums
 
-        ArrayList<Integer> myNumsClone = (ArrayList<Integer>)myNums.clone();
+        //Want to print out zero if value of myLong is 0 (only one zero)
+        boolean valueIsZero = true;
+
+
+
+        ArrayList<Integer> myNumsClone = (ArrayList<Integer>) myNums.clone();
         for (int i = 0; i < myNumsClone.size(); i++) {
             Integer element = myNumsClone.get(i);
-            if (element != 0){
+            if (element != 0) {
+                valueIsZero = false;
                 break;
-            }
-            else {
+            } else {
                 myNums.remove(0);
             }
         }
+
+        //Will add 0 back if the value of myLong is just 0.
+        if (valueIsZero){
+            isNeg = false;
+            myNums.add(0);
+        }
+
+
+
     }
 
     public myLong add(myLong other) {
@@ -193,6 +200,7 @@ public class myLong{
             }
 
         }
+
         //Return array of two myLongs, so they can be passed through subtract function
         myLong[] ar = new myLong[2];
         ar[0] = larger;
@@ -299,6 +307,7 @@ public class myLong{
         return answer;
     }
 
+
     public myLong multiply(myLong other){
         /*
         This function takes in two myLongs and multiplies them by each other.
@@ -356,6 +365,12 @@ public class myLong{
         myLong result2 = test.add(addTest);
         System.out.println(result2);
 
+        test.setLong("145");
+        subTest.setLong("145");
+
+        System.out.print(test + " - " + subTest + " = " );
+        myLong result4 = test.subtract(subTest);
+        System.out.println(result4);
 
         myLong first = new myLong();
         first.setLong("123456789");
