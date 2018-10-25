@@ -284,7 +284,6 @@ public class myLong{
         }
 
         //If not, set the larger myLong by using the otherIsLarger function.
-
         myLong [] twoElements = otherIsLarger(other);
         //System.out.println(addNeg);
 
@@ -345,37 +344,13 @@ public class myLong{
 
     public static void main(String args[]) {
 
-        //Test subtraction
-        myLong test = new myLong();
-        test.setLong("5000");
-
-        myLong subTest = new myLong();
-        subTest.setLong("11256");
-
-        System.out.print(test + " - " + subTest + " = " );
-        myLong result = test.subtract(subTest);
-        System.out.println(result);
-
-
-        myLong addTest = new myLong();
-        addTest.setLong("5678");
-        test.setLong("45678");
-
-        System.out.print(test + " + " + addTest + " = " );
-        myLong result2 = test.add(addTest);
-        System.out.println(result2);
-
-        test.setLong("145");
-        subTest.setLong("145");
-
-        System.out.print(test + " - " + subTest + " = " );
-        myLong result4 = test.subtract(subTest);
-        System.out.println(result4);
 
         myLong first = new myLong();
         first.setLong("123456789");
+
         myLong second = new myLong();
         second.setLong("987654321");
+
         System.out.print(first + " x " + second + " = " );
         myLong result3 = first.multiply(second);
         System.out.println(result3);
