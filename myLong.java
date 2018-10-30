@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class myLong{
@@ -86,7 +85,28 @@ public class myLong{
 
     }
 
-    public myLong add(myLong other) {
+    public myLong add(myLong other){
+
+        myLong result;
+        if (this.isNeg && !other.isNeg){
+            result = other.doSubtract(this);
+        }
+
+        else if (!this.isNeg && other.isNeg){
+            result = this.doSubtract(other);
+        }
+
+        else if (this.isNeg && other.isNeg){
+            result = this.useAdd(other);
+            result.isNeg = true;
+        }
+        else{
+            result = this.useAdd(other);
+        }
+
+        return result;
+    }
+    public myLong useAdd(myLong other) {
 
         /*
         Parameter: a myLong that will be added to the myLong that passes it
@@ -100,8 +120,6 @@ public class myLong{
         int thisSize = this.myNums.size();
         myLong sum = new myLong();
 
-        //Use clone so that myNums does not actually change.
-        //ArrayList<Integer> myNumsClone = (ArrayList<Integer>)myNums.clone();
 
         //Makes both myLongs to be equal in size, padding with zeros at the front
         while (otherSize != thisSize) {
@@ -116,10 +134,6 @@ public class myLong{
             otherSize = other.myNums.size();
         }
 
-
-        //for (int n = 0; n < thisSize; n++){
-            //sum.myNums.add(0);
-        //}
 
         //Make sure not adding empty array
         if (other.myNums.size() > 0) {
@@ -225,9 +239,6 @@ public class myLong{
             smaller.myNums.add(0,0);
         }
 
-        //System.out.println(larger.myNums);
-        //System.out.println(smaller.myNums);
-
         //Iterate through, sizes should be equal
         for (int i = largeSize - 1; i >= 0; i--) {
             //Get last element of myLong being added
@@ -254,7 +265,6 @@ public class myLong{
 
                 }
             }
-           //System.out.println(largerLastNum);
             result = largerLastNum + result;
 
         }
@@ -263,7 +273,38 @@ public class myLong{
 
     }
 
-    public myLong subtract(myLong other) {
+    public myLong subtract(myLong other){
+        myLong answer = new myLong();
+
+        if (!this.isNeg && !other.isNeg){
+            answer = this.doSubtract(other);
+            return answer;
+        }
+
+        if (this.isNeg && !other.isNeg){
+            this.isNeg = false;
+            answer = this.useAdd(other);
+            answer.isNeg = true;
+            return answer;
+        }
+
+        if (other.isNeg && !this.isNeg){
+
+            other.isNeg = false;
+            answer = this.useAdd(other);
+            return answer;
+        }
+
+        if (other.isNeg && this.isNeg){
+            other.isNeg = false;
+            this.isNeg = false;
+            answer = other.subtract(this);
+            return answer;
+        }
+
+        return answer;
+    }
+    public myLong doSubtract(myLong other) {
         /*
         This function will call 2 other functions.
         First, it will determine which function is larger. If myLong other is larger, we will also know
@@ -283,6 +324,7 @@ public class myLong{
             return answer;
         }
 
+
         //If not, set the larger myLong by using the otherIsLarger function.
         myLong [] twoElements = otherIsLarger(other);
         //System.out.println(addNeg);
@@ -299,8 +341,6 @@ public class myLong{
         if (addNeg) {
             result = "-" + result;
         }
-
-        //System.out.println(larger.myNums);
 
         answer.setLong(result);
         return answer;
@@ -326,7 +366,7 @@ public class myLong{
             int zerosNeeded = other.myNums.size() - 1 - other.myNums.indexOf(each);
 
             while (each > 0){
-                toAdd.add(this);
+                toAdd.useAdd(this);
                 each --;
             }
 
@@ -335,29 +375,38 @@ public class myLong{
                 zerosNeeded--;
             }
 
-            product.add(toAdd);
+            product.useAdd(toAdd);
+        }
+        if (other.isNeg || this.isNeg){
+            product.isNeg = true;
         }
 
-
+        if (other.isNeg && this.isNeg){
+            product.isNeg = false;
+        }
         return product;
     }
 
+
+
     public static void main(String args[]) {
-
-
         myLong first = new myLong();
         first.setLong("123456789");
-
         myLong second = new myLong();
         second.setLong("987654321");
 
-        System.out.print(first + " x " + second + " = " );
-        myLong result3 = first.multiply(second);
-        System.out.println(result3);
+        myLong result = first.multiply(second);
+        System.out.println(result);
 
+        first.setLong("-10");
+        second.setLong("100");
+        result = first.add(second);
+        System.out.println(result);
 
-
-
+        first.setLong("10");
+        second.setLong("-100");
+        result = first.add(second);
+        System.out.println(result);
     }
 
 
