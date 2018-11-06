@@ -1,3 +1,11 @@
+/*
+ 
+ Warm-up response:
+ The * represents a pointer to a variable.
+ & marks that we are looking at the memory address of a variable.
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
