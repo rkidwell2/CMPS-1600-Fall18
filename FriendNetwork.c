@@ -4,7 +4,7 @@
 //
 //  Created by Rosalind Kidwell on 11/13/18.
 //  Copyright © 2018 Rosalind Kidwell. All rights reserved.
-//
+//NOTE: No information for any data is permitted to include spaces
 
 #include <stdio.h>
 #include <string.h>
@@ -94,10 +94,10 @@ void add(char* email){
     printf("Age? ");
     scanf("%s", newGuy->age);
         
-    printf("Hometown? ");
+    printf("Hometown? (Do not use spaces when entering) ");
     scanf("%s", newGuy->hometown);
         
-    printf("Hobby? ");
+    printf("Hobby? (Do not use spaces when entering) ");
     scanf("%s", newGuy->hobby);
         
     /*Profile is created, now add to the list
@@ -503,7 +503,7 @@ int main() {
     ConnectionHead = NULL;
     
     char choice [5];
-    printf("MENU:\nPress A to add person\nPress R to remove person\nPress E to edit an entry\nPress C to make a connection\nPress V to view each member and their connections\nPress D to remove a connection\nPress F to get the friends of a person\nPress S to save all connections to a file\nPress M to make a network from a retrieved file\nPress Q to quit\n");
+    printf("MENU:\nPress A to add person\nPress R to remove person\nPress E to edit an entry\nPress C to make a connection\nPress V to view each member and their connections\nPress D to remove a connection\nPress F to get the friends of a person\nPress S to save all connections to a file\nPress M to make a network from a retrieved file\nPress Q to quit\nNOTE: No data entry is permitted to have spaces. (Enter New York as NewYork.)\n");
     scanf("%s", choice);
     
     while (strcmp(choice, "Q") != 0){
