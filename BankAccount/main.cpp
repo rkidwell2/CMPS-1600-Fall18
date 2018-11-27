@@ -10,14 +10,14 @@
 #include "BankAccount.hpp"
 #include "CheckingAccount.hpp"
 #include "SavingsAccount.hpp"
-#include "Bank.hpp"
+
 #include <string>
 
 using namespace std;
 
 
 int main(int argc, const char * argv[]) {
-    Bank help;
+ 
     BankAccount starter("Jane Doe", 0.0);
     BankAccount advanced("Harry Potter", 500.0);
     starter.deposit(1000);
@@ -26,8 +26,8 @@ int main(int argc, const char * argv[]) {
     starter.withdraw(200);
     advanced.deposit(200);
     
-    //starter.to_string();
-    //advanced.to_string();
+    starter.to_string();
+    advanced.to_string();
     
     SavingsAccount save("Mr. Save", 0.0, 1);
     CheckingAccount check("Mr. Check", 500);
