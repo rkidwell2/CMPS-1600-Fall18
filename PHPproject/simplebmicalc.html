@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+-->
+
+<html>
+<head>
+	<title>BMI Calculator</title>
+	<link rel ="stylesheet" type="text/css" href="sample.css" >
+</head>
+<style>
+*{
+	font-family: Arial;
+}
+h2 {color: #6222D1;}
+input[type=submit] {
+	background-color: #A28CC8;
+	color: black;
+	padding: 10px 20px;
+	font-size: 14px;
+	cursor: pointer;
+
+}
+</style>
+<body>
+	<h2>Calculate your BMI</h2>
+
+
+	<form action = "simplebmicalc.php" method = "POST" >
+		Enter your height:
+		<input type = "text" name="feet"> feet
+		<input type = "text" name="inch"> inches
+		<br>Enter your weight (lbs):
+		<input type = "text" name ="weight">
+		<br><br>
+		<input type = "submit" value = "Calculate my BMI!">
+
+	</form>
+
+
+</form>
+</body>
+</html>
